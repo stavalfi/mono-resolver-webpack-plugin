@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "target": "es2017",
+    "checkJs": false,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true
+  },
+  "include": ["app"],
+  "exclude": ["node_modules", "build", "jest"]
+}
