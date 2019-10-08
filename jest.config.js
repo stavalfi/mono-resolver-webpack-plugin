@@ -2,12 +2,12 @@ const path = require('path')
 
 module.exports = {
   projects: [
-    {
-      displayName: 'lint',
-      runner: 'jest-runner-eslint',
-      testRegex: [`./*.spec.js$`, `./*.spec.ts$`],
-      roots: [path.resolve(__dirname, 'src'),path.resolve(__dirname, 'test')],
-    },
+    // {
+    //   displayName: 'lint',
+    //   runner: 'jest-runner-eslint',
+    //   testRegex: [`./*.spec.js$`, `./*.spec.ts$`],
+    //   roots: [path.resolve(__dirname, 'src'),path.resolve(__dirname, 'test')],
+    // },
     {
       displayName: 'test',
       preset: 'ts-jest/presets/js-with-ts',

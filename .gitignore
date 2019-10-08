@@ -69,3 +69,4 @@ lib/
 .DS_Store
 .DS_Store?
 dist/
+!test/**/node_modules/
