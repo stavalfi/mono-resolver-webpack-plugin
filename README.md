@@ -1,6 +1,6 @@
 # mono-resolver-webpack-plugin
 
-Webpack resolver for mono-repositories
+Webpack resolver plugin for mono-repositories
 
 ---
 
@@ -105,12 +105,17 @@ Note to user:
 
 if we would talk about `react` instead of `lodash` in the example above:
 
-- without using this plugin, you ensure that you only ever use the same version of `react` in the build because everytime, webpack will find it in `mono-repo/packages/package3/node_modules`. and that's good.
-- Using this plugin has a huge risk of a bug if the other packages use different versions of `react` because, this plugin will resolve multiple times `react` in multiple versions.
+- without using this plugin, you ensure that you only ever use the 
+same version of `react` in the build because everytime, webpack will
+ find it in `mono-repo/packages/package3/node_modules`. and that's good.
+- Using this plugin has contains a risk for a bug: incase the other packages
+ use different versions of `react` because, this plugin will resolve
+  multiple times `react` in multiple versions from multiple `node_modules` folders.
 
   solution:
 
-  - Don't use multiple versions of the same module that has a side-effect. this is a cause of troubles.
+  - Don't use multiple versions of the same module that has a side-effect. this is
+   a cause of troubles.
 
 ### Alternative solutions
 

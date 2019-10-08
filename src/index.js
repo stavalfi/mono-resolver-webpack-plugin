@@ -23,7 +23,7 @@ module.exports = class MonoResolverPlugin {
 
       // try to find packages props from lerna/... mono-repos managers
       return (
-        Promise.all([getLernaPackages()])
+        Promise.all([fromLerna()])
         // if nothing was found, use what the user gave
           .then(packagesPropsArray => packagesPropsArray.find(Array.isArray) || packagesProps)
           .then(packagesProps =>
