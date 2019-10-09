@@ -14,17 +14,9 @@ Webpack resolver plugin for mono-repositories
 
 webpack 4+
 
-`yarn add --dev mono-resolver-webpack-plugin`
-
----
-
-### Mono-repo support
-
-This plugin natively support:
-
-- lerna projects with lerna.json file in the root repository folder.
-
-Need support for other mono-repo libraries? Open an issue or send a PR.
+```bash
+yarn add --dev mono-resolver-webpack-plugin
+```
 
 ### How To Use
 
@@ -36,21 +28,11 @@ const webpackConfig = {
     plugins: [
       //...
       new MonoResolverPlugin({
-        // only needed if it IS a lerna mono-repo.
-        // if every package in your mono repo is
-        // called in npm `@webpack123/package1`, then write `webpack123`.
-        npmOrganizationName: 'webpack123',
-        // only needed if it is NOT a lerna mono-repo. if it is, this plugin will use lerna-api to get it by it self.
-        // list here all your packages folder names and folder locations (only absulote paths).
-        packagesProps: [
-          { folderName: 'package1', location: '/usr/project123/package1' },
-          { folderName: 'package1', location: '/usr/project123/sub-folder1/package2' },
-          { folderName: 'package1', location: '/usr/project123/sub-folder2/package3' },
-        ],
-        // optional. don't do nothing for the following modules in the code; let webpack
+        // Optional: pass here all your packages-names that you compile in the same build.
+        // this plugin won't do nothing for the following modules in the code; let webpack
         // find thier locations alone or by your other plugins/loaders/webpack-resolve-options.
         // NOTE: for any given module `module1-name` we treat it same as `module1-name(.*)`.
-        ignoreModules: ['react', '@webpack123/package1', '@webpack123/package2/f1/g2'],
+        ignoreModules: ['react', '@your-lib/package1', '@webpack123/package2/f1/g2'],
       }),
     ],
   },
@@ -105,17 +87,17 @@ Note to user:
 
 if we would talk about `react` instead of `lodash` in the example above:
 
-- without using this plugin, you ensure that you only ever use the 
-same version of `react` in the build because everytime, webpack will
- find it in `mono-repo/packages/package3/node_modules`. and that's good.
+- without using this plugin, you ensure that you only ever use the
+  same version of `react` in the build because everytime, webpack will
+  find it in `mono-repo/packages/package3/node_modules`. and that's good.
 - Using this plugin has contains a risk for a bug: incase the other packages
- use different versions of `react` because, this plugin will resolve
+  use different versions of `react` because, this plugin will resolve
   multiple times `react` in multiple versions from multiple `node_modules` folders.
 
   solution:
 
   - Don't use multiple versions of the same module that has a side-effect. this is
-   a cause of troubles.
+    a cause of troubles.
 
 ### Alternative solutions
 
